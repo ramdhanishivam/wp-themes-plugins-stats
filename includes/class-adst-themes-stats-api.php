@@ -399,9 +399,9 @@ class ADST_Themes_Stats_Api {
 	public function display_theme_average_ratings( $atts ) {
 		$atts          = shortcode_atts(
 			array(
-				'theme' => isset( $atts['wp_theme_slug'] ) ? $atts['wp_theme_slug'] : '',
-				'outof' => isset( $atts['outof'] ) ? $atts['outof'] : '',
-				'display'=> isset( $atts['display'] ) ? $atts['display'] : '',
+				'theme'   => isset( $atts['wp_theme_slug'] ) ? $atts['wp_theme_slug'] : '',
+				'outof'   => isset( $atts['outof'] ) ? $atts['outof'] : '',
+				'display' => isset( $atts['display'] ) ? $atts['display'] : '',
 			),
 			$atts
 		);
@@ -409,7 +409,7 @@ class ADST_Themes_Stats_Api {
 		$wp_theme_slug = $atts['theme'];
 		$outof         = $atts['outof'];
 		$display       = $atts['display'];
-		$show          = array('number', 'both', 'star');
+		$show          = array( 'number', 'both', 'star' );
 
 		if ( '' === $wp_theme_slug ) {
 			return __( 'Please verify theme slug.', 'wp-themes-plugins-stats' );
@@ -434,14 +434,14 @@ class ADST_Themes_Stats_Api {
 				if ( is_numeric( $outof ) || empty( $outof ) ) {
 					$outof = ( ! empty( $outof ) ? $outof : 100 );
 					$outof = ( ( $theme->rating ) / 100 ) * $outof;
-					if ( empty( $display ) || in_array($display, $show)) {
+					if ( empty( $display ) || in_array( $display, $show, true ) ) {
 						$display = ( ! empty( $display ) ? $display : 'number' );
-						if ( 'number' !== $display  ) {
+						if ( 'number' !== $display ) {
 							$output = $this->display_star_rating( $theme );
 						}
 
 						if ( 'both' === $display ) {
-							return $outof . ' &nbsp; &nbsp;' . $output ;
+							return $outof . ' &nbsp; &nbsp;' . $output;
 						} elseif ( 'star' === $display ) {
 							return $output;
 						} elseif ( 'number' === $display ) {
@@ -460,16 +460,16 @@ class ADST_Themes_Stats_Api {
 					$outof = ( ! empty( $outof ) ? $outof : 100 );
 					$outof = ( ( $theme->rating ) / 100 ) * $outof;
 
-					if ( empty( $display ) || in_array($display, $show)) {
+					if ( empty( $display ) || in_array( $display, $show, true ) ) {
 						$display = ( ! empty( $display ) ? $display : 'number' );
-						if ( 'number' !== $display  ) {
+						if ( 'number' !== $display ) {
 							$output = $this->display_star_rating( $theme );
 						}
 
 						if ( 'both' === $display ) {
-							return $outof . ' &nbsp; &nbsp;' . $output ;
+							return $outof . ' &nbsp; &nbsp;' . $output;
 						} elseif ( 'star' === $display ) {
-							return $output;    
+							return $output;
 						} elseif ( 'number' === $display ) {
 							return $outof;
 						}
@@ -482,54 +482,58 @@ class ADST_Themes_Stats_Api {
 			}
 		}
 	}
-
+	/**
+	 * Display star rating of theme.
+	 *
+	 * @param array $theme to get the rating of theme.
+	 */
 	public function display_star_rating( $theme ) {
 		$rating = $theme->rating;
-		switch ($rating) {
+		switch ( $rating ) {
 			case ( $rating < 5 ):
-				$stars = array( 0,0,0,0,0 );
+				$stars = array( 0, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 5 && $rating < 15 ):
-				$stars = array( 5,0,0,0,0 );
+				$stars = array( 5, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 15 && $rating < 25 ):
-				$stars = array( 1,0,0,0,0 );
+				$stars = array( 1, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 25 && $rating < 35 ):
-				$stars = array( 1,5,0,0,0 );
+				$stars = array( 1, 5, 0, 0, 0 );
 				break;
 			case ( $rating >= 35 && $rating < 45 ):
-				$stars = array( 1,1,0,0,0 );
+				$stars = array( 1, 1, 0, 0, 0 );
 				break;
 			case ( $rating >= 45 && $rating < 55 ):
-				$stars = array( 1,1,5,0,0 );
+				$stars = array( 1, 1, 5, 0, 0 );
 				break;
 			case ( $rating >= 55 && $rating < 65 ):
-				$stars = array( 1,1,1,0,0 );
+				$stars = array( 1, 1, 1, 0, 0 );
 				break;
 			case ( $rating >= 65 && $rating < 75 ):
-				$stars = array( 1,1,1,5,0 );
+				$stars = array( 1, 1, 1, 5, 0 );
 				break;
 			case ( $rating >= 75 && $rating < 85 ):
-				$stars = array( 1,1,1,1,0 );
+				$stars = array( 1, 1, 1, 1, 0 );
 				break;
 			case ( $rating >= 85 && $rating < 95 ):
-				$stars = array( 1,1,1,1,5 );
+				$stars = array( 1, 1, 1, 1, 5 );
 				break;
 			case ( $rating >= 95 ):
-				$stars = array( 1,1,1,1,1 );
+				$stars = array( 1, 1, 1, 1, 1 );
 				break;
 			default:
 				break;
 		}
 
 		$output = '<span>';
-		foreach( $stars as $star ) {
+		foreach ( $stars as $star ) {
 			if ( 0 === $star ) {
 				$output .= '<span class="dashicons dashicons-star-empty" style=" color: #ffb900;"></span>';
-			} else if ( 5 === $star ) {
+			} elseif ( 5 === $star ) {
 				$output .= '<span class="dashicons dashicons-star-half" style=" color: #ffb900;"></span>';
-			} else if ( 1 === $star ) {
+			} elseif ( 1 === $star ) {
 				$output .= '<span class="dashicons dashicons-star-filled" style=" color: #ffb900;"></span>';
 			}
 		}

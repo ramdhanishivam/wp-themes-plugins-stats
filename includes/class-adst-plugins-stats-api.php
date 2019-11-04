@@ -82,8 +82,8 @@ class ADST_Plugins_Stats_Api {
 			array(
 				'body' => array(
 					'action'  => 'plugin_information',
-						'request' => serialize( (object) $args ), //PHPCS:ignore:WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
-					),
+					'request' => serialize( (object) $args ), //PHPCS:ignore:WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+				),
 			)
 		);
 
@@ -225,7 +225,7 @@ class ADST_Plugins_Stats_Api {
 	 * @return var $wp_plugin_slug to delete transient.
 	 */
 	public function bsf_delete_transient( $wp_plugin_slug ) {
-		$adst_info                      = get_option( 'adst_info' );
+		$adst_info          = get_option( 'adst_info' );
 		$expiration         = $adst_info['Frequency'];
 		$update_plugin_info = get_option( 'adst_plugin_info' );
 		$slug               = 'bsf_tr_plugin_info_' . $wp_plugin_slug;
@@ -394,16 +394,16 @@ class ADST_Plugins_Stats_Api {
 	public function display_plugin__average_ratings( $atts ) {
 		$atts           = shortcode_atts(
 			array(
-				'plugin' => isset( $atts['wp_plugin_slug'] ) ? $atts['wp_plugin_slug'] : '',
-				'outof'  => isset( $atts['outof'] ) ? $atts['outof'] : '',
-				'display'=> isset( $atts['display'] ) ? $atts['display'] : '',
+				'plugin'  => isset( $atts['wp_plugin_slug'] ) ? $atts['wp_plugin_slug'] : '',
+				'outof'   => isset( $atts['outof'] ) ? $atts['outof'] : '',
+				'display' => isset( $atts['display'] ) ? $atts['display'] : '',
 			),
 			$atts
 		);
 		$wp_plugin_slug = $atts['plugin'];
 		$outof          = $atts['outof'];
 		$display        = $atts['display'];
-		$show           = array('number', 'both', 'star');
+		$show           = array( 'number', 'both', 'star' );
 
 		if ( '' === $wp_plugin_slug ) {
 			return __( 'Please verify plugin slug.', 'wp-themes-plugins-stats' );
@@ -420,7 +420,6 @@ class ADST_Plugins_Stats_Api {
 				),
 			);
 			$plugin     = get_option( '_site_transient_bsf_tr_plugin_info_' . $wp_plugin_slug );
-			// var_dump($plugin);die();
 			if ( '' === $plugin ) {
 				return __( 'Please verify plugin slug.', 'wp-themes-plugins-stats' );
 			} else {
@@ -434,24 +433,22 @@ class ADST_Plugins_Stats_Api {
 						$outof = ( ! empty( $outof ) ? $outof : 100 );
 						$outof = ( ( $plugin->rating ) / 100 ) * $outof;
 
-						if ( empty( $display ) || in_array($display, $show)){
+						if ( empty( $display ) || in_array( $display, $show, true ) ) {
 							$display = ( ! empty( $display ) ? $display : 'number' );
-							if ( 'number' !== $display  ) {
+							if ( 'number' !== $display ) {
 								$output = $this->display_star_rating( $plugin );
 							}
 
 							if ( 'both' === $display ) {
-								return $outof . ' &nbsp; &nbsp;' . $output ;
+								return $outof . ' &nbsp; &nbsp;' . $output;
 							} elseif ( 'star' === $display ) {
 								return $output;
 							} elseif ( 'number' === $display ) {
 								return $outof;
 							}
-
 						} else {
 							return 'Provide valid value for display i.e number/star/both';
 						}
-						
 					} else {
 						return 'Out Of Value Must Be Nummeric!';
 					}
@@ -464,20 +461,19 @@ class ADST_Plugins_Stats_Api {
 						$outof = ( ! empty( $outof ) ? $outof : 100 );
 						$outof = ( ( $plugin->rating ) / 100 ) * $outof;
 
-						if ( empty( $display ) || in_array($display, $show)){
+						if ( empty( $display ) || in_array( $display, $show, true ) ) {
 							$display = ( ! empty( $display ) ? $display : 'number' );
-							if ( 'number' !== $display  ) {
+							if ( 'number' !== $display ) {
 								$output = $this->display_star_rating( $plugin );
 							}
 
 							if ( 'both' === $display ) {
-								return $outof . ' &nbsp; &nbsp;' . $output ;
+								return $outof . ' &nbsp; &nbsp;' . $output;
 							} elseif ( 'star' === $display ) {
 								return $output;
 							} elseif ( 'number' === $display ) {
 								return $outof;
 							}
-
 						} else {
 							return 'Provide valid value for display i.e number/star/both';
 						}
@@ -488,53 +484,57 @@ class ADST_Plugins_Stats_Api {
 			}
 		}
 	}
-
+	/**
+	 * Display star rating of plugin.
+	 *
+	 * @param array $plugin to get the rating of plugin.
+	 */
 	public function display_star_rating( $plugin ) {
 		$rating = $plugin->rating;
-		switch ($rating) {
+		switch ( $rating ) {
 			case ( $rating < 5 ):
-				$stars = array( 0,0,0,0,0 );
+				$stars = array( 0, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 5 && $rating < 15 ):
-				$stars = array( 5,0,0,0,0 );
+				$stars = array( 5, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 15 && $rating < 25 ):
-				$stars = array( 1,0,0,0,0 );
+				$stars = array( 1, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 25 && $rating < 35 ):
-				$stars = array( 1,5,0,0,0 );
+				$stars = array( 1, 5, 0, 0, 0 );
 				break;
 			case ( $rating >= 35 && $rating < 45 ):
-				$stars = array( 1,1,0,0,0 );
+				$stars = array( 1, 1, 0, 0, 0 );
 				break;
 			case ( $rating >= 45 && $rating < 55 ):
-				$stars = array( 1,1,5,0,0 );
+				$stars = array( 1, 1, 5, 0, 0 );
 				break;
 			case ( $rating >= 55 && $rating < 65 ):
-				$stars = array( 1,1,1,0,0 );
+				$stars = array( 1, 1, 1, 0, 0 );
 				break;
 			case ( $rating >= 65 && $rating < 75 ):
-				$stars = array( 1,1,1,5,0 );
+				$stars = array( 1, 1, 1, 5, 0 );
 				break;
 			case ( $rating >= 75 && $rating < 85 ):
-				$stars = array( 1,1,1,1,0 );
+				$stars = array( 1, 1, 1, 1, 0 );
 				break;
 			case ( $rating >= 85 && $rating < 95 ):
-				$stars = array( 1,1,1,1,5 );
+				$stars = array( 1, 1, 1, 1, 5 );
 				break;
 			case ( $rating >= 95 ):
-				$stars = array( 1,1,1,1,1 );
+				$stars = array( 1, 1, 1, 1, 1 );
 				break;
 			default:
 				break;
 		}
 		$output = '<span class="eps-star-rating">';
-		foreach( $stars as $star ) {
+		foreach ( $stars as $star ) {
 			if ( 0 === $star ) {
 				$output .= '<span class="dashicons dashicons-star-empty" style=" color: #ffb900;"></span>';
-			} else if ( 5 === $star ) {
+			} elseif ( 5 === $star ) {
 				$output .= '<span class="dashicons dashicons-star-half" style=" color: #ffb900;"></span>';
-			} else if ( 1 === $star ) {
+			} elseif ( 1 === $star ) {
 				$output .= '<span class="dashicons dashicons-star-filled" style=" color: #ffb900;"></span>';
 			}
 		}
@@ -692,7 +692,7 @@ class ADST_Plugins_Stats_Api {
 	 * @return var $wp_plugin_slug to delete transient.
 	 */
 	public function bsf_delete_active_count_transient( $wp_plugin_slug ) {
-		$adst_info                      = get_option( 'adst_info' );
+		$adst_info          = get_option( 'adst_info' );
 		$expiration         = $adst_info['Frequency'];
 		$update_plugin_info = get_option( 'adst_plugin_info' );
 		$slug               = 'bsf_tr_plugin_Active_Count_' . $wp_plugin_slug;
@@ -819,7 +819,7 @@ class ADST_Plugins_Stats_Api {
 	 * @return var $wp_plugin_slug to delete transient.
 	 */
 	public function bsf_delete_download_count_transient( $wp_plugin_slug ) {
-		$adst_info                      = get_option( 'adst_info' );
+		$adst_info          = get_option( 'adst_info' );
 		$expiration         = $adst_info['Frequency'];
 		$update_plugin_info = get_option( 'adst_plugin_info' );
 		$slug               = 'bsf_tr_plugin_downloads_Count_' . $wp_plugin_slug;
