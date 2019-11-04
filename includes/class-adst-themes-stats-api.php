@@ -484,28 +484,43 @@ class ADST_Themes_Stats_Api {
 	}
 
 	public function display_star_rating( $theme ) {
-		if ( $theme->rating < 5 ) {
-			$stars = array( 0,0,0,0,0 );
-		} else if ( $theme->rating >= 5 && $theme->rating < 15 ) {
-			$stars = array( 5,0,0,0,0 );
-		} else if ( $theme->rating >= 15 && $theme->rating < 25 ) {
-			$stars = array( 1,0,0,0,0 );
-		} else if ( $theme->rating >= 25 && $theme->rating < 35 ) {
-			$stars = array( 1,5,0,0,0 );
-		} else if ( $theme->rating >= 35 && $theme->rating < 45 ) {
-			$stars = array( 1,1,0,0,0 );
-		} else if ( $theme->rating >= 45 && $theme->rating < 55 ) {
-			$stars = array( 1,1,5,0,0 );
-		} else if ( $theme->rating >= 55 && $theme->rating < 65 ) {
-			$stars = array( 1,1,1,0,0 );
-		} else if ( $theme->rating >= 65 && $theme->rating < 75 ) {
-			$stars = array( 1,1,1,5,0 );
-		} else if ( $theme->rating >= 75 && $theme->rating < 85 ) {
-			$stars = array( 1,1,1,1,0 );
-		} else if ( $theme->rating >= 85 && $theme->rating < 95 ) {
-			$stars = array( 1,1,1,1,5 );
-		} else if ( $theme->rating >= 95 ) {
-			$stars = array( 1,1,1,1,1 );
+		$rating = $theme->rating;
+		switch ($rating) {
+			case ( $rating < 5 ):
+				$stars = array( 0,0,0,0,0 );
+				break;
+			case ( $rating >= 5 && $rating < 15 ):
+				$stars = array( 5,0,0,0,0 );
+				break;
+			case ( $rating >= 15 && $rating < 25 ):
+				$stars = array( 1,0,0,0,0 );
+				break;
+			case ( $rating >= 25 && $rating < 35 ):
+				$stars = array( 1,5,0,0,0 );
+				break;
+			case ( $rating >= 35 && $rating < 45 ):
+				$stars = array( 1,1,0,0,0 );
+				break;
+			case ( $rating >= 45 && $rating < 55 ):
+				$stars = array( 1,1,5,0,0 );
+				break;
+			case ( $rating >= 55 && $rating < 65 ):
+				$stars = array( 1,1,1,0,0 );
+				break;
+			case ( $rating >= 65 && $rating < 75 ):
+				$stars = array( 1,1,1,5,0 );
+				break;
+			case ( $rating >= 75 && $rating < 85 ):
+				$stars = array( 1,1,1,1,0 );
+				break;
+			case ( $rating >= 85 && $rating < 95 ):
+				$stars = array( 1,1,1,1,5 );
+				break;
+			case ( $rating >= 95 ):
+				$stars = array( 1,1,1,1,1 );
+				break;
+			default:
+				break;
 		}
 
 		$output = '<span>';
