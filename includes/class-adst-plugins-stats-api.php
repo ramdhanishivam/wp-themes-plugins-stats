@@ -490,28 +490,43 @@ class ADST_Plugins_Stats_Api {
 	}
 
 	public function display_star_rating( $plugin ) {
-		if ( $plugin->rating < 5 ) {
-			$stars = array( 0,0,0,0,0 );
-		} else if ( $plugin->rating >= 5 && $plugin->rating < 15 ) {
-			$stars = array( 5,0,0,0,0 );
-		} else if ( $plugin->rating >= 15 && $plugin->rating < 25 ) {
-			$stars = array( 1,0,0,0,0 );
-		} else if ( $plugin->rating >= 25 && $plugin->rating < 35 ) {
-			$stars = array( 1,5,0,0,0 );
-		} else if ( $plugin->rating >= 35 && $plugin->rating < 45 ) {
-			$stars = array( 1,1,0,0,0 );
-		} else if ( $plugin->rating >= 45 && $plugin->rating < 55 ) {
-			$stars = array( 1,1,5,0,0 );
-		} else if ( $plugin->rating >= 55 && $plugin->rating < 65 ) {
-			$stars = array( 1,1,1,0,0 );
-		} else if ( $plugin->rating >= 65 && $plugin->rating < 75 ) {
-			$stars = array( 1,1,1,5,0 );
-		} else if ( $plugin->rating >= 75 && $plugin->rating < 85 ) {
-			$stars = array( 1,1,1,1,0 );
-		} else if ( $plugin->rating >= 85 && $plugin->rating < 95 ) {
-			$stars = array( 1,1,1,1,5 );
-		} else if ( $plugin->rating >= 95 ) {
-			$stars = array( 1,1,1,1,1 );
+		$rating = $plugin->rating;
+		switch ($rating) {
+			case ( $rating < 5 ):
+				$stars = array( 0,0,0,0,0 );
+				break;
+			case ( $rating >= 5 && $rating < 15 ):
+				$stars = array( 5,0,0,0,0 );
+				break;
+			case ( $rating >= 15 && $rating < 25 ):
+				$stars = array( 1,0,0,0,0 );
+				break;
+			case ( $rating >= 25 && $rating < 35 ):
+				$stars = array( 1,5,0,0,0 );
+				break;
+			case ( $rating >= 35 && $rating < 45 ):
+				$stars = array( 1,1,0,0,0 );
+				break;
+			case ( $rating >= 45 && $rating < 55 ):
+				$stars = array( 1,1,5,0,0 );
+				break;
+			case ( $rating >= 55 && $rating < 65 ):
+				$stars = array( 1,1,1,0,0 );
+				break;
+			case ( $rating >= 65 && $rating < 75 ):
+				$stars = array( 1,1,1,5,0 );
+				break;
+			case ( $rating >= 75 && $rating < 85 ):
+				$stars = array( 1,1,1,1,0 );
+				break;
+			case ( $rating >= 85 && $rating < 95 ):
+				$stars = array( 1,1,1,1,5 );
+				break;
+			case ( $rating >= 95 ):
+				$stars = array( 1,1,1,1,1 );
+				break;
+			default:
+				break;
 		}
 		$output = '<span class="eps-star-rating">';
 		foreach( $stars as $star ) {
