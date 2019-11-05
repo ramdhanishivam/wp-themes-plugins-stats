@@ -1,0 +1,313 @@
+# Copyright (C) 2019 Brainstorm Force
+# This file is distributed under the same license as the WP Themes & Plugins Stats package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Themes & Plugins Stats 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/star\n"
+"POT-Creation-Date: 2019-11-05 13:19:14+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Themes & Plugins Stats"
+msgstr ""
+
+#: includes/adst-frontend.php:44
+msgid "General"
+msgstr ""
+
+#: includes/adst-frontend.php:51
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/adst-general-settings.php:36
+msgid "Update Stats After"
+msgstr ""
+
+#: includes/adst-general-settings.php:40
+msgid "Day(s)"
+msgstr ""
+
+#: includes/adst-general-settings.php:47
+msgid ""
+"Set how frequently you want to update the stats data from WordPress API. "
+"This setting is helpful to reduce API calls."
+msgstr ""
+
+#: includes/adst-general-settings.php:53
+msgid "Installation & Download Count Format"
+msgstr ""
+
+#: includes/adst-general-settings.php:59
+msgid "Default (1000000)"
+msgstr ""
+
+#: includes/adst-general-settings.php:64
+msgid "In Thousands (1000K)"
+msgstr ""
+
+#: includes/adst-general-settings.php:70
+msgid "In Millions (1M)"
+msgstr ""
+
+#: includes/adst-general-settings.php:74
+msgid ""
+"Generally, installation & download count is a big number. You can display "
+"it in a more readable format."
+msgstr ""
+
+#: includes/adst-general-settings.php:74
+msgid "For Example, A number 1,000,000 can be displayed as 1M or 1000K."
+msgstr ""
+
+#: includes/adst-general-settings.php:81
+msgid "Number Grouping Format"
+msgstr ""
+
+#: includes/adst-general-settings.php:104
+msgid "Date Format"
+msgstr ""
+
+#: includes/adst-general-settings.php:108
+msgid "F j, Y"
+msgstr ""
+
+#: includes/adst-user-manual.php:21
+msgid "Getting Started!"
+msgstr ""
+
+#: includes/adst-user-manual.php:22
+msgid ""
+"This plugin automatically tracks theme and plugin information from the "
+"WordPress repository, store it  and display it on your website."
+msgstr ""
+
+#: includes/adst-user-manual.php:22
+msgid ""
+"The plugin uses shortcodes to display stats. You would just need to add "
+"theme/plugin slug/author name and paste the shortcode in the required "
+"location."
+msgstr ""
+
+#: includes/adst-user-manual.php:26
+msgid "How to Use?"
+msgstr ""
+
+#: includes/adst-user-manual.php:29
+msgid "Step 1"
+msgstr ""
+
+#: includes/adst-user-manual.php:29
+msgid ""
+": Under the General tab set the required parameters, like time interval for "
+"updating stats, count, date format."
+msgstr ""
+
+#: includes/adst-user-manual.php:30
+msgid "Step 2"
+msgstr ""
+
+#: includes/adst-user-manual.php:30
+msgid ": Choose and copy the shortcode from the following table."
+msgstr ""
+
+#: includes/adst-user-manual.php:31
+msgid "Step 3"
+msgstr ""
+
+#: includes/adst-user-manual.php:31
+msgid ": Paste it on a required page/post."
+msgstr ""
+
+#: includes/adst-user-manual.php:32
+msgid "Step 4"
+msgstr ""
+
+#: includes/adst-user-manual.php:32
+msgid ": Add a slug/author name for theme/plugin."
+msgstr ""
+
+#: includes/adst-user-manual.php:35
+msgid "Shortcodes for Theme Stats"
+msgstr ""
+
+#: includes/adst-user-manual.php:41
+msgid "Theme Name"
+msgstr ""
+
+#: includes/adst-user-manual.php:49 includes/adst-user-manual.php:145
+msgid "Total Active Installs"
+msgstr ""
+
+#: includes/adst-user-manual.php:57 includes/adst-user-manual.php:153
+msgid "Last Updated"
+msgstr ""
+
+#: includes/adst-user-manual.php:65
+msgid "Theme Version"
+msgstr ""
+
+#: includes/adst-user-manual.php:73
+msgid "Theme Ratings"
+msgstr ""
+
+#: includes/adst-user-manual.php:81 includes/adst-user-manual.php:177
+msgid "5 Star Ratings"
+msgstr ""
+
+#: includes/adst-user-manual.php:89 includes/adst-user-manual.php:185
+msgid "Average Ratings"
+msgstr ""
+
+#: includes/adst-user-manual.php:97 includes/adst-user-manual.php:193
+msgid "Total Downloads"
+msgstr ""
+
+#: includes/adst-user-manual.php:105 includes/adst-user-manual.php:201
+msgid "Download Link"
+msgstr ""
+
+#: includes/adst-user-manual.php:113
+msgid "Total Active Installation of All Themes"
+msgstr ""
+
+#: includes/adst-user-manual.php:121
+msgid "Total Download Count of All Themes"
+msgstr ""
+
+#: includes/adst-user-manual.php:131
+msgid "Shortcodes for Plugin Stats"
+msgstr ""
+
+#: includes/adst-user-manual.php:137
+msgid "Plugin Name"
+msgstr ""
+
+#: includes/adst-user-manual.php:161
+msgid "Plugin Version"
+msgstr ""
+
+#: includes/adst-user-manual.php:169
+msgid "Plugin Ratings"
+msgstr ""
+
+#: includes/adst-user-manual.php:209
+msgid "Total Active Installation of All Plugins"
+msgstr ""
+
+#: includes/adst-user-manual.php:217
+msgid "Total Download Count of All Plugins"
+msgstr ""
+
+#: includes/class-adst-plugins-stats-api.php:93
+#: includes/class-adst-plugins-stats-api.php:111
+#: includes/class-adst-plugins-stats-api.php:133
+#: includes/class-adst-plugins-stats-api.php:160
+#: includes/class-adst-plugins-stats-api.php:165
+#: includes/class-adst-plugins-stats-api.php:171
+#: includes/class-adst-plugins-stats-api.php:199
+#: includes/class-adst-plugins-stats-api.php:204
+#: includes/class-adst-plugins-stats-api.php:212
+#: includes/class-adst-plugins-stats-api.php:292
+#: includes/class-adst-plugins-stats-api.php:297
+#: includes/class-adst-plugins-stats-api.php:303
+#: includes/class-adst-plugins-stats-api.php:331
+#: includes/class-adst-plugins-stats-api.php:336
+#: includes/class-adst-plugins-stats-api.php:342
+#: includes/class-adst-plugins-stats-api.php:370
+#: includes/class-adst-plugins-stats-api.php:375
+#: includes/class-adst-plugins-stats-api.php:381
+#: includes/class-adst-plugins-stats-api.php:409
+#: includes/class-adst-plugins-stats-api.php:424
+#: includes/class-adst-plugins-stats-api.php:430
+#: includes/class-adst-plugins-stats-api.php:436
+#: includes/class-adst-plugins-stats-api.php:562
+#: includes/class-adst-plugins-stats-api.php:567
+#: includes/class-adst-plugins-stats-api.php:575
+#: includes/class-adst-plugins-stats-api.php:607
+#: includes/class-adst-plugins-stats-api.php:612
+#: includes/class-adst-plugins-stats-api.php:620
+#: includes/class-adst-plugins-stats-api.php:648
+#: includes/class-adst-plugins-stats-api.php:663
+#: includes/class-adst-plugins-stats-api.php:668
+#: includes/class-adst-plugins-stats-api.php:675
+msgid "Please verify plugin slug."
+msgstr ""
+
+#: includes/class-adst-plugins-stats-api.php:741
+#: includes/class-adst-plugins-stats-api.php:761
+#: includes/class-adst-plugins-stats-api.php:789
+#: includes/class-adst-plugins-stats-api.php:794
+#: includes/class-adst-plugins-stats-api.php:802
+#: includes/class-adst-plugins-stats-api.php:867
+#: includes/class-adst-plugins-stats-api.php:888
+#: includes/class-adst-plugins-stats-api.php:915
+#: includes/class-adst-plugins-stats-api.php:921
+#: includes/class-adst-plugins-stats-api.php:929
+#: includes/class-adst-themes-stats-api.php:767
+#: includes/class-adst-themes-stats-api.php:772
+#: includes/class-adst-themes-stats-api.php:775
+#: includes/class-adst-themes-stats-api.php:785
+#: includes/class-adst-themes-stats-api.php:788
+#: includes/class-adst-themes-stats-api.php:911
+#: includes/class-adst-themes-stats-api.php:917
+#: includes/class-adst-themes-stats-api.php:920
+#: includes/class-adst-themes-stats-api.php:928
+#: includes/class-adst-themes-stats-api.php:932
+msgid "Please verify author slug."
+msgstr ""
+
+#: includes/class-adst-themes-stats-api.php:92
+#: includes/class-adst-themes-stats-api.php:109
+#: includes/class-adst-themes-stats-api.php:161
+#: includes/class-adst-themes-stats-api.php:177
+#: includes/class-adst-themes-stats-api.php:199
+#: includes/class-adst-themes-stats-api.php:227
+#: includes/class-adst-themes-stats-api.php:237
+#: includes/class-adst-themes-stats-api.php:261
+#: includes/class-adst-themes-stats-api.php:280
+#: includes/class-adst-themes-stats-api.php:288
+#: includes/class-adst-themes-stats-api.php:317
+#: includes/class-adst-themes-stats-api.php:347
+#: includes/class-adst-themes-stats-api.php:353
+#: includes/class-adst-themes-stats-api.php:384
+#: includes/class-adst-themes-stats-api.php:415
+#: includes/class-adst-themes-stats-api.php:432
+#: includes/class-adst-themes-stats-api.php:562
+#: includes/class-adst-themes-stats-api.php:599
+#: includes/class-adst-themes-stats-api.php:633
+#: includes/class-adst-themes-stats-api.php:651
+#: includes/class-adst-themes-stats-api.php:865
+msgid "Please verify theme slug."
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"The plugin automatically fetch information about Themes and Plugins stats "
+"with the help of WordPress.org  API. Shortcodes make it easy to display "
+"those stats anywhere on the website."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Brainstorm Force"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://brainstormforce.com"
+msgstr ""
