@@ -429,57 +429,15 @@ class ADST_Plugins_Stats_Api {
 					if ( 'Please verify plugin slug.' === $plugin ) {
 						return __( 'Please verify plugin slug.', 'wp-themes-plugins-stats' );
 					}
-					if ( is_numeric( $outof ) || empty( $outof ) ) {
-						$outof = ( ! empty( $outof ) ? $outof : 100 );
-						$outof = ( ( $plugin->rating ) / 100 ) * $outof;
+					return $this->get_rating( $outof, $plugin, $display, $show );
 
-						if ( empty( $display ) || in_array( $display, $show, true ) ) {
-							$display = ( ! empty( $display ) ? $display : 'number' );
-							if ( 'number' !== $display ) {
-								$output = $this->display_star_rating( $plugin );
-							}
-
-							if ( 'both' === $display ) {
-								return $outof . ' &nbsp; &nbsp;' . $output;
-							} elseif ( 'star' === $display ) {
-								return $output;
-							} elseif ( 'number' === $display ) {
-								return $outof;
-							}
-						} else {
-							return 'Provide valid value for display i.e number/star/both';
-						}
-					} else {
-						return 'Out Of Value Must Be Nummeric!';
-					}
 				} else {
 					$plugin = $this->bsf_delete_transient( $wp_plugin_slug );
 					if ( null === $plugin ) {
 						return __( 'Please verify plugin slug.', 'wp-themes-plugins-stats' );
 					}
-					if ( is_numeric( $outof ) || empty( $outof ) ) {
-						$outof = ( ! empty( $outof ) ? $outof : 100 );
-						$outof = ( ( $plugin->rating ) / 100 ) * $outof;
+					return $this->get_rating( $outof, $plugin, $display, $show );
 
-						if ( empty( $display ) || in_array( $display, $show, true ) ) {
-							$display = ( ! empty( $display ) ? $display : 'number' );
-							if ( 'number' !== $display ) {
-								$output = $this->display_star_rating( $plugin );
-							}
-
-							if ( 'both' === $display ) {
-								return $outof . ' &nbsp; &nbsp;' . $output;
-							} elseif ( 'star' === $display ) {
-								return $output;
-							} elseif ( 'number' === $display ) {
-								return $outof;
-							}
-						} else {
-							return 'Provide valid value for display i.e number/star/both';
-						}
-					} else {
-						return 'Out Of Value Must Be Nummeric!';
-					}
 				}
 			}
 		}
@@ -541,6 +499,38 @@ class ADST_Plugins_Stats_Api {
 		$output .= '</span>';
 		return $output;
 
+	}
+	/**
+	 * Get average rating of plugin .
+	 *
+	 * @param int   $atts Get attributes outof and display.
+	 * @param array $plugin to get the rating of plugin.
+	 * @param array $show Get display type form array.
+	 */
+	public function get_rating( $atts, $plugin, $show ) {
+		if ( is_numeric( $outof ) || empty( $outof ) ) {
+			$outof = ( ! empty( $outof ) ? $outof : 100 );
+			$outof = ( ( $plugin->rating ) / 100 ) * $outof;
+
+			if ( empty( $display ) || in_array( $display, $show, true ) ) {
+				$display = ( ! empty( $display ) ? $display : 'number' );
+				if ( 'number' !== $display ) {
+					$output = $this->display_star_rating( $plugin );
+				}
+
+				if ( 'both' === $display ) {
+					return $outof . ' &nbsp; &nbsp;' . $output;
+				} elseif ( 'star' === $display ) {
+					return $output;
+				} elseif ( 'number' === $display ) {
+					return $outof;
+				}
+			} else {
+				return 'Provide valid value for display i.e number/star/both';
+			}
+		} else {
+			return 'Out Of Value Must Be Nummeric!';
+		}
 	}
 	/**
 	 * Shortcode
