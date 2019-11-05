@@ -431,12 +431,10 @@ class ADST_Themes_Stats_Api {
 				if ( 'Please verify theme slug.' === $theme ) {
 					return __( 'Please verify theme slug.', 'wp-themes-plugins-stats' );
 				}
-				$average_rating = $this->getRating( $outof, $theme, $display, $show );
-				return $average_rating;
+				return $this->get_rating( $outof, $theme, $display, $show );
 			} else {
-				$theme          = $this->bsf_delete_transient( $wp_theme_slug );
-				$average_rating = $this->getRating( $outof, $theme, $display, $show );
-				return $average_rating;
+				$theme = $this->bsf_delete_transient( $wp_theme_slug );
+				return $this->get_rating( $outof, $theme, $display, $show );
 			}
 		}
 	}
@@ -498,6 +496,40 @@ class ADST_Themes_Stats_Api {
 		$output .= '</span>';
 		return $output;
 
+	}
+	/**
+	 * Get average rating of Theme .
+	 *
+	 * @param int    $outof Get outof value to calculate avg-rating.
+	 * @param array  $theme to access theme rating. 
+	 * @param string $display to get the display type.
+	 * @param array  $show to check the display type.
+	 */
+	public function get_rating( $outof, $theme, $display, $show )
+	{
+		if ( is_numeric( $outof ) || empty( $outof ) ) {
+			$outof = ( ! empty( $outof ) ? $outof : 100 );
+			$outof = ( ( $theme->rating ) / 100 ) * $outof;
+
+			if ( empty( $display ) || in_array( $display, $show, true ) ) {
+				$display = ( ! empty( $display ) ? $display : 'number' );
+				if ( 'number' !== $display ) {
+					$output = $this->display_star_rating( $theme );
+				}
+
+				if ( 'both' === $display ) {
+					return $outof . ' &nbsp; &nbsp;' . $output;
+				} elseif ( 'star' === $display ) {
+					return $output;
+				} elseif ( 'number' === $display ) {
+					return $outof;
+				}
+			} else {
+				return 'Provide valid value for display i.e number/star/both';
+			}
+		} else {
+			return 'Out Of Value Must Be Nummeric!';
+		}
 	}
 	/**
 	 * Display Theme Downloads.

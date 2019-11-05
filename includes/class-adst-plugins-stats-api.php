@@ -503,11 +503,12 @@ class ADST_Plugins_Stats_Api {
 	/**
 	 * Get average rating of plugin .
 	 *
-	 * @param int   $atts Get attributes outof and display.
-	 * @param array $plugin to get the rating of plugin.
-	 * @param array $show Get display type form array.
+	 * @param int    $outof Get outof value to calculate avg-rating.
+	 * @param array  $plugin to access plugin rating. 
+	 * @param string $display to get the display type.
+	 * @param array  $show to check the display type.
 	 */
-	public function get_rating( $atts, $plugin, $show ) {
+	public function get_rating( $outof, $plugin, $display, $show ) {
 		if ( is_numeric( $outof ) || empty( $outof ) ) {
 			$outof = ( ! empty( $outof ) ? $outof : 100 );
 			$outof = ( ( $plugin->rating ) / 100 ) * $outof;
