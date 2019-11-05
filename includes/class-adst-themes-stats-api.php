@@ -508,7 +508,7 @@ class ADST_Themes_Stats_Api {
 	 * @param array  $show to check the display type.
 	 */
 	public function get_rating( $outof, $theme, $display, $show ) {
-		if ( $outof > 0 ) {
+		if ( $outof > 0 || empty( $outof ) ) {
 			if ( is_numeric( $outof ) || empty( $outof ) ) {
 				$outof = ( ! empty( $outof ) ? $outof : 100 );
 				$outof = ( ( $theme->rating ) / 100 ) * $outof;

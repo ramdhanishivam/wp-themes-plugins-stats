@@ -509,7 +509,7 @@ class ADST_Plugins_Stats_Api {
 	 * @param array  $show to check the display type.
 	 */
 	public function get_rating( $outof, $plugin, $display, $show ) {
-		if ( $outof > 0 ) {
+		if ( $outof > 0 || empty( $outof ) ) {
 			if ( is_numeric( $outof ) || empty( $outof ) ) {
 				$outof = ( ! empty( $outof ) ? $outof : 100 );
 				$outof = ( ( $plugin->rating ) / 100 ) * $outof;
