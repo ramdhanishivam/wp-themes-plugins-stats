@@ -504,7 +504,7 @@ class ADST_Plugins_Stats_Api {
 	 * Get average rating of plugin .
 	 *
 	 * @param int    $outof Get outof value to calculate avg-rating.
-	 * @param array  $plugin to access plugin rating. 
+	 * @param array  $plugin to access plugin rating.
 	 * @param string $display to get the display type.
 	 * @param array  $show to check the display type.
 	 */

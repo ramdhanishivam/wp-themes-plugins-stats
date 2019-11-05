@@ -501,12 +501,11 @@ class ADST_Themes_Stats_Api {
 	 * Get average rating of Theme .
 	 *
 	 * @param int    $outof Get outof value to calculate avg-rating.
-	 * @param array  $theme to access theme rating. 
+	 * @param array  $theme to access theme rating.
 	 * @param string $display to get the display type.
 	 * @param array  $show to check the display type.
 	 */
-	public function get_rating( $outof, $theme, $display, $show )
-	{
+	public function get_rating( $outof, $theme, $display, $show ) {
 		if ( is_numeric( $outof ) || empty( $outof ) ) {
 			$outof = ( ! empty( $outof ) ? $outof : 100 );
 			$outof = ( ( $theme->rating ) / 100 ) * $outof;
