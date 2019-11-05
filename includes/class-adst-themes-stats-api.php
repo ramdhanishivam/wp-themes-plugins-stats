@@ -446,7 +446,10 @@ class ADST_Themes_Stats_Api {
 	public function display_star_rating( $theme ) {
 		$rating = $theme->rating;
 		switch ( $rating ) {
-			case ( $rating < 5 ):
+			case ( 0 === $rating ):
+				$stars = array( 0, 0, 0, 0, 0 );
+				break;
+			case ( $rating > 0 && $rating < 5 ):
 				$stars = array( 0, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 5 && $rating < 15 ):
@@ -495,7 +498,6 @@ class ADST_Themes_Stats_Api {
 		}
 		$output .= '</span>';
 		return $output;
-
 	}
 	/**
 	 * Get average rating of Theme .
@@ -506,28 +508,32 @@ class ADST_Themes_Stats_Api {
 	 * @param array  $show to check the display type.
 	 */
 	public function get_rating( $outof, $theme, $display, $show ) {
-		if ( is_numeric( $outof ) || empty( $outof ) ) {
-			$outof = ( ! empty( $outof ) ? $outof : 100 );
-			$outof = ( ( $theme->rating ) / 100 ) * $outof;
+		if ( $outof > 0 ) {
+			if ( is_numeric( $outof ) || empty( $outof ) ) {
+				$outof = ( ! empty( $outof ) ? $outof : 100 );
+				$outof = ( ( $theme->rating ) / 100 ) * $outof;
 
-			if ( empty( $display ) || in_array( $display, $show, true ) ) {
-				$display = ( ! empty( $display ) ? $display : 'number' );
-				if ( 'number' !== $display ) {
-					$output = $this->display_star_rating( $theme );
-				}
+				if ( empty( $display ) || in_array( $display, $show, true ) ) {
+					$display = ( ! empty( $display ) ? $display : 'number' );
+					if ( 'number' !== $display ) {
+						$output = $this->display_star_rating( $theme );
+					}
 
-				if ( 'both' === $display ) {
-					return $outof . ' &nbsp; &nbsp;' . $output;
-				} elseif ( 'star' === $display ) {
-					return $output;
-				} elseif ( 'number' === $display ) {
-					return $outof;
+					if ( 'both' === $display ) {
+						return $outof . ' &nbsp; &nbsp;' . $output;
+					} elseif ( 'star' === $display ) {
+						return $output;
+					} elseif ( 'number' === $display ) {
+						return $outof;
+					}
+				} else {
+					return 'Provide valid value for display i.e number/star/both';
 				}
 			} else {
-				return 'Provide valid value for display i.e number/star/both';
+				return 'Out Of Value Must Be Nummeric!';
 			}
 		} else {
-			return 'Out Of Value Must Be Nummeric!';
+			return 'Out of value must be greater than zero';
 		}
 	}
 	/**

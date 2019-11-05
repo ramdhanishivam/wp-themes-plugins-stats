@@ -430,14 +430,12 @@ class ADST_Plugins_Stats_Api {
 						return __( 'Please verify plugin slug.', 'wp-themes-plugins-stats' );
 					}
 					return $this->get_rating( $outof, $plugin, $display, $show );
-
 				} else {
 					$plugin = $this->bsf_delete_transient( $wp_plugin_slug );
 					if ( null === $plugin ) {
 						return __( 'Please verify plugin slug.', 'wp-themes-plugins-stats' );
 					}
 					return $this->get_rating( $outof, $plugin, $display, $show );
-
 				}
 			}
 		}
@@ -450,7 +448,10 @@ class ADST_Plugins_Stats_Api {
 	public function display_star_rating( $plugin ) {
 		$rating = $plugin->rating;
 		switch ( $rating ) {
-			case ( $rating < 5 ):
+			case ( 0 === $rating ):
+				$stars = array( 0, 0, 0, 0, 0 );
+				break;
+			case ( $rating > 0 && $rating < 5 ):
 				$stars = array( 0, 0, 0, 0, 0 );
 				break;
 			case ( $rating >= 5 && $rating < 15 ):
@@ -498,7 +499,6 @@ class ADST_Plugins_Stats_Api {
 		}
 		$output .= '</span>';
 		return $output;
-
 	}
 	/**
 	 * Get average rating of plugin .
@@ -509,28 +509,32 @@ class ADST_Plugins_Stats_Api {
 	 * @param array  $show to check the display type.
 	 */
 	public function get_rating( $outof, $plugin, $display, $show ) {
-		if ( is_numeric( $outof ) || empty( $outof ) ) {
-			$outof = ( ! empty( $outof ) ? $outof : 100 );
-			$outof = ( ( $plugin->rating ) / 100 ) * $outof;
+		if ( $outof > 0 ) {
+			if ( is_numeric( $outof ) || empty( $outof ) ) {
+				$outof = ( ! empty( $outof ) ? $outof : 100 );
+				$outof = ( ( $plugin->rating ) / 100 ) * $outof;
 
-			if ( empty( $display ) || in_array( $display, $show, true ) ) {
-				$display = ( ! empty( $display ) ? $display : 'number' );
-				if ( 'number' !== $display ) {
-					$output = $this->display_star_rating( $plugin );
-				}
+				if ( empty( $display ) || in_array( $display, $show, true ) ) {
+					$display = ( ! empty( $display ) ? $display : 'number' );
+					if ( 'number' !== $display ) {
+						$output = $this->display_star_rating( $plugin );
+					}
 
-				if ( 'both' === $display ) {
-					return $outof . ' &nbsp; &nbsp;' . $output;
-				} elseif ( 'star' === $display ) {
-					return $output;
-				} elseif ( 'number' === $display ) {
-					return $outof;
+					if ( 'both' === $display ) {
+						return $outof . ' &nbsp; &nbsp;' . $output;
+					} elseif ( 'star' === $display ) {
+						return $output;
+					} elseif ( 'number' === $display ) {
+						return $outof;
+					}
+				} else {
+					return 'Provide valid value for display i.e number/star/both';
 				}
 			} else {
-				return 'Provide valid value for display i.e number/star/both';
+				return 'Out Of Value Must Be Nummeric!';
 			}
 		} else {
-			return 'Out Of Value Must Be Nummeric!';
+			return 'Out of value must be greater than zero';
 		}
 	}
 	/**
