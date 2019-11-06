@@ -1,0 +1,29 @@
+{
+  "name": "star",
+  "version": "1.0.0",
+  "description": "=== WP Themes & Plugins Stats ===\r Contributors: brainstormforce \r Donate link: https://www.paypal.me/BrainstormForce\r Tags: active-install, stats, themes-stats, plugin-stats, total download & active install count of plugin and theme by author.    \r Requires at least: 4.2\r Requires PHP: 5.2\r Tested up to: 5.2\r Stable tag: 1.0.0\r License: GPLv2 or later\r License URI: https://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramdhanishivam/star.git"
+  },
+  "author": "Brainstorm Force",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramdhanishivam/star/issues"
+  },
+  "homepage": "https://github.com/ramdhanishivam/star#readme",
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-compress": "^1.6.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-wp-i18n": "^1.0.3",
+    "grunt-wp-readme-to-markdown": "^2.0.1",
+    "grunt-zip": "^0.18.2"
+  }
+}
